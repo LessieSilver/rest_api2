@@ -1,0 +1,14 @@
+version: "3.9"
+
+services:
+  api:
+    build: .
+    container_name: advertisements_api
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./data:/app/data
+    environment:
+      - DATABASE_URL=sqlite+aiosqlite:///./data/advertisements.db
+      - SECRET_KEY=change-me-in-production
+    restart: unless-stopped
